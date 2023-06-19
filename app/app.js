@@ -61,10 +61,10 @@ apiRouter.get('/api', (_req, res) => {
 
 // Host API endpoints
 apiRouter.use(config.get('server.apiPath'), v1Router);
-app.use(config.get('server.basePath'), apiRouter);
+app.use(config.get('server.apiPath'), apiRouter);
 
 // Host the static frontend assets
-const staticFilesPath = config.get('frontend.basePath');
+const staticFilesPath = '/';
 app.use('/favicon.ico', (_req, res) => { res.redirect(`${staticFilesPath}/favicon.ico`); });
 app.use(staticFilesPath, express.static(path.join(__dirname, 'frontend/dist')));
 
@@ -86,7 +86,7 @@ app.use((err, _req, res, _next) => {
 
 // Handle 404
 app.use((req, res) => {
-  if (req.originalUrl.startsWith(`${config.get('server.basePath')}/api`)) {
+  if (req.originalUrl.startsWith('/api')) {
     // Return a 404 problem if attempting to access API
     new Problem(404, 'Page Not Found', {
       detail: req.originalUrl

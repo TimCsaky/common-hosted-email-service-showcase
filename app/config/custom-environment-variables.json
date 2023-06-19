@@ -1,7 +1,6 @@
 {
   "frontend": {
     "apiPath": "FRONTEND_APIPATH",
-    "basePath": "FRONTEND_BASEPATH",
     "dashboardUrl": "FRONTEND_DASHBOARDURL",
     "keycloak": {
       "clientId": "FRONTEND_KC_CLIENTID",
@@ -11,7 +10,6 @@
   },
   "server": {
     "apiPath": "SERVER_APIPATH",
-    "basePath" : "SERVER_BASEPATH",
     "bodyLimit": "SERVER_BODYLIMIT",
     "keycloak": {
       "clientId": "SERVER_KC_CLIENTID",

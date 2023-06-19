@@ -14,7 +14,7 @@ const proxyObject = {
 };
 
 module.exports = {
-  publicPath: process.env.FRONTEND_BASEPATH ? process.env.FRONTEND_BASEPATH : '/app',
+  publicPath: './',
   'transpileDependencies': [
     'vuetify',
     /ckeditor5-[^/\\]+[/\\]src[/\\].+\.js$/,

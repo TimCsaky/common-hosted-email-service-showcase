@@ -32,7 +32,6 @@ loadConfig();
  * @function initializeApp
  * Initializes and mounts the Vue instance
  * @param {boolean} [kcSuccess=false] is Keycloak initialized successfully?
- * @param {string} [basepath='/'] base server path
  */
 function initializeApp(kcSuccess = false, basePath = '/') {
   if (kcSuccess && !store.hasModule('auth')) store.registerModule('auth', auth);
@@ -53,7 +52,7 @@ function initializeApp(kcSuccess = false, basePath = '/') {
  */
 async function loadConfig() {
   // App publicPath is ./ - so use relative path here, will hit the backend server using relative path to root.
-  const configUrl = process.env.NODE_ENV === 'production' ? 'config' : '/app/config';
+  const configUrl = process.env.NODE_ENV === 'production' ? 'config' : '/config';
   const storageKey = 'config';
 
   try {
@@ -94,7 +93,7 @@ function loadKeycloak(config) {
       url: config.keycloak.serverUrl
     },
     onReady: () => {
-      initializeApp(true, config.basePath);
+      initializeApp(true);
     },
     onInitError: error => {
       console.error('Keycloak failed to initialize'); // eslint-disable-line no-console
